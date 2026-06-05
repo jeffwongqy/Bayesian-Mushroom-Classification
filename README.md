@@ -101,6 +101,7 @@ $$\theta^{(1)}, \theta^{(2)}, ..., \theta^{(500)}$$
 
 ````python
 with pm.Model() as mushroom_model:
+  # priors
   beta_0 = pm.Normal('beta_0', mu = 0 , sigma = 5)
   beta_cap = pm.Normal('beta_cap', mu = 0, sigma = 5)
   beta_gill = pm.Normal('beta_gill', mu = 0, sigma = 5)
@@ -119,6 +120,7 @@ with pm.Model() as mushroom_model:
   beta_waste = pm.Normal('beta_waste', mu = 0, sigma = 1) * sigma_habitat
   beta_woods = pm.Normal('beta_woods', mu = 0, sigma = 1) * sigma_habitat
 
+  # likelihood
   is_grasses = (mushroom_df['habitat'] == 'g').astype(int).values
   is_paths = (mushroom_df['habitat'] == 'p').astype(int).values
   is_leaves = (mushroom_df['habitat'] == 'l').astype(int).values
@@ -145,6 +147,7 @@ with pm.Model() as mushroom_model:
   p = pm.math.invlogit(linear_predictor)
   y_obs = pm.Bernoulli('y_obs', p = p, observed = y)
 
+  # posterior
   trace = pm.sample(draws = 500,
                     tune = 250,
                     chains = 3,
