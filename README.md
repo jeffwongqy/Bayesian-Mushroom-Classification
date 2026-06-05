@@ -1,1 +1,1 @@
-# Bayesian-Mushroom-Classification
+# Bayesian Mushroom Classification: Edible or Poisonous? 
