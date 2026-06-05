@@ -205,6 +205,10 @@ The model exhibits exceptional performance and complete convergence with overlap
 https://archive.ics.uci.edu/dataset/73/mushroom
 
 ## References
+[1] Nguyen, T. T. (2020, September 2). Bayesian logistic regression with PyMC3 | Towards Data Science. Towards Data Science. https://towardsdatascience.com/bayesian-logistic-regression-with-pymc3-8e17c576f31a/
+
+[2] Wall, J. (2024, November 23). Bayesian Modeling with PYMC: Building Intuitive and Powerful Models. Medium. https://medium.com/@walljd20/modeling-continuous-targets-building-and-interpreting-bayesian-regressions-using-pymc-e12f8d3730a8
+
 
 
 
