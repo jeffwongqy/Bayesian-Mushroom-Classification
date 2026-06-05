@@ -71,4 +71,8 @@ $$\beta_{j} \sim N(0, 5)$$
 
 $$\sigma_{habitat} \sim HalfNormal(5)$$
 
+- Habitat coefficients (`beta_grasses`, `beta_paths`, etc) follow hierarchical priors and allow habitat effects to share information and reduce overfitting:
+
+$$\beta_{habitat} \sim N(0, \sigma_{habitat})$$
+
 
