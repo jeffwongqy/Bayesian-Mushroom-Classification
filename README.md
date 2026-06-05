@@ -14,7 +14,7 @@ Distinguishing between edible and poisonous mushroom species presents a classic 
 
 ## 3. Preprocessing 
 ### 3.1 Data Ingestion 
-This step mount your Google Drive environment and load the raw mushroom CSV dataset into a pandas DataFrame and preview its initial structural rows. 
+This step mounts your Google Drive environment and loads the raw mushroom CSV dataset into a pandas DataFrame and previews its initial structural rows. 
 
 ````python
 filepath = "/content/drive/MyDrive/Bayesian Mushroom Classification/mushrooms.csv"
@@ -156,4 +156,9 @@ with pm.Model() as mushroom_model:
 
 ````
 
+## 5. Model Evaluation 
 
+
+
+
+## 
