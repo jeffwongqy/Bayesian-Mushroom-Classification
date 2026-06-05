@@ -77,8 +77,17 @@ $$\beta_{habitat} \sim N(0, \sigma_{habitat})$$
 
 ### 4.2 Likelihood
 - Habitat categories are converted into binary indicators (`is_grasses`, `is_paths`, etc.), where 1 means the mushroom belongs to that habitat and 0 otherwise.
-- The linear predictor combines all predictor effects:
+- The linear predictor combines all predictor effects to calculate the log-odds of a mushroom being poisonous:
 
 $$\eta = \beta_{0} + \sum \beta_{j}X_{j} + \sum \beta_{habitat} H$$
+
+- The inverse logistic function converts log-odds into a probability to ensure that predicted probabilities lie between 0 and 1:
+
+$$p = \frac{1}{1 + e^{-\eta}}$$
+
+- The observed outcome follows a Bernoulli distribution to model whether each mushroom is poisonous (1) or edible (0):
+
+$$y_{i} \sim Bernoulli(p_{i})$$
+
 
 
