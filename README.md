@@ -95,6 +95,62 @@ $$y_{i} \sim Bernoulli(p_{i})$$
 
 $$P(\theta|y) \propto P(y|\theta) P(\theta)$$
 
-where $\theta$ represents all model parameters 
+- `pm.sample()` uses the NUTS algorithm to generate posterior samples to approximate the posterior distribution and quantify uncertainty in the estimates:
+
+$$\theta^{(1)}, \theta^{(2)}, ..., \theta^{(500)}$$
+
+````python
+with pm.Model() as mushroom_model:
+  beta_0 = pm.Normal('beta_0', mu = 0 , sigma = 5)
+  beta_cap = pm.Normal('beta_cap', mu = 0, sigma = 5)
+  beta_gill = pm.Normal('beta_gill', mu = 0, sigma = 5)
+  beta_odor = pm.Normal('beta_odor', mu = 0, sigma = 5)
+  beta_ring = pm.Normal('beta_ring', mu = 0, sigma = 5)
+  beta_spore = pm.Normal('beta_spore', mu = 0, sigma = 5)
+  beta_stalk = pm.Normal('beta_stalk', mu = 0, sigma = 5)
+  beta_veil = pm.Normal('beta_veil', mu = 0, sigma = 5)
+
+  sigma_habitat = pm.HalfNormal('sigma_habitat', sigma = 5)
+  beta_grasses = pm.Normal('beta_grasses', mu = 0, sigma = 1) * sigma_habitat
+  beta_paths = pm.Normal('beta_paths', mu = 0, sigma = 1) * sigma_habitat
+  beta_leaves = pm.Normal('beta_leaves', mu = 0, sigma = 1) * sigma_habitat
+  beta_meadows = pm.Normal('beta_meadows', mu = 0, sigma = 1) * sigma_habitat
+  beta_urban = pm.Normal('beta_urban', mu = 0, sigma = 1) * sigma_habitat
+  beta_waste = pm.Normal('beta_waste', mu = 0, sigma = 1) * sigma_habitat
+  beta_woods = pm.Normal('beta_woods', mu = 0, sigma = 1) * sigma_habitat
+
+  is_grasses = (mushroom_df['habitat'] == 'g').astype(int).values
+  is_paths = (mushroom_df['habitat'] == 'p').astype(int).values
+  is_leaves = (mushroom_df['habitat'] == 'l').astype(int).values
+  is_meadows = (mushroom_df['habitat'] == 'm').astype(int).values
+  is_urban = (mushroom_df['habitat'] == 'u').astype(int).values
+  is_waste = (mushroom_df['habitat'] == 'w').astype(int).values
+  is_woods = (mushroom_df['habitat'] == 'd').astype(int).values
+
+  linear_predictor = (beta_0 + beta_cap * mushroom_df['cap-surface'] +
+                      beta_gill * mushroom_df['gill-color'] +
+                      beta_odor * mushroom_df['odor'] +
+                      beta_ring * mushroom_df['ring-number'] +
+                      beta_spore * mushroom_df['spore-print-color'] +
+                      beta_stalk * mushroom_df['stalk-surface-above-ring'] +
+                      beta_veil * mushroom_df['veil-color'] +
+                       (beta_grasses  * is_grasses) +
+                      (beta_paths * is_paths) +
+                       (beta_leaves * is_leaves) +
+                      (beta_meadows * is_meadows) +
+                       (beta_urban * is_urban) +
+                      (beta_waste * is_waste) +
+                       (beta_woods * is_woods))
+
+  p = pm.math.invlogit(linear_predictor)
+  y_obs = pm.Bernoulli('y_obs', p = p, observed = y)
+
+  trace = pm.sample(draws = 500,
+                    tune = 250,
+                    chains = 3,
+                    return_inferencedata = True,
+                    nuts_sampler = 'numpyro')
+
+````
 
 
