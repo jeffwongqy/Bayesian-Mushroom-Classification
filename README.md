@@ -155,6 +155,7 @@ with pm.Model() as mushroom_model:
                     nuts_sampler = 'numpyro')
 
 ````
+<img width="986" height="67" alt="Screenshot 2026-06-05 225558" src="https://github.com/user-attachments/assets/53f4a339-eb7e-419d-8bf5-d0301c0ec9cd" />
 
 ## 5. Model Diagnostics and Convergence
 ### 5.1 Trace Plots
