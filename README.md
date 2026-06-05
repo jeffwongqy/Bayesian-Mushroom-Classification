@@ -183,10 +183,16 @@ The effective sample size tells us how many independent, uncorrelated draws we m
 
 
 ## 6.0 Posterior Predictive Validation and Inference
+### 6.1 Posterior Predictive Check (PPC)
 A Posterior Predictive Check evaluates model fit by using the parameters learned from the data to simulate entirely new, synthetic datasets, then overlaying them against the true ground truth.
+
+
+<img width="657" height="550" alt="pcc" src="https://github.com/user-attachments/assets/8cf71913-4057-4092-aa36-5e9ba4e25b09" />
 
 - The true underlying distribution of the binary classification data is shown by the solid black line (observed). The model's generated expectation is shown by the dashed orange line (Posterior Predictive Mean). The fact that these two lines overlap almost perfectly proves that the model accurately captures the exact proportion of edible versus poisonous mushrooms in the dataset.
 
 - The individual light blue lines represent unique simulation runs from the posterior draws. They form a clean, tight band symmetrically enveloping the ground truth. This shows that the model's uncertainty is well-calibrated - it is neither wildly overconfident nor completely lost.
+
+### 6.2 Inference 
 
 
