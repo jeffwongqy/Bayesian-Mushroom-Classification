@@ -160,7 +160,7 @@ with pm.Model() as mushroom_model:
 ### 5.1 Trace Plots
 The posterior density curves (left column) across all three independent chains overlay each other beautifully, establishing that they converged on the same numerical solutions. Correspondingly, the sampling paths (right column) show perfectly stationary, dense, and tightly integrated histories without any geometric sticking, drifting, or multi-modality. This indicates complete parameter space exploration. 
 
-
+<img width="1189" height="3189" alt="trace plots" src="https://github.com/user-attachments/assets/877c0432-3750-4518-9dda-3fb38da6e36b" />
 
 
 ### 5.2 Autocorrelation Plots 
@@ -168,10 +168,13 @@ The autocorrelation coefficients for nearly all parameters drop off to absolute 
 
 - While the group-level random effects (beta_grasses, beta_paths, etc.) display a slight, expected geometric decay, they safely taper off within 5 to 10 lags.
 
+<img width="2934" height="5510" alt="autocorrelation plots" src="https://github.com/user-attachments/assets/a9df2df8-9123-4004-b76b-89552fa850f1" />
+
 
 ### 5.3 Gelman-Rubin Diagnostic 
 The R metric measures the ratio of variance between the chains to the variance within the chains. In this case, every single fixed effect and random effect in the summary table reports an R of exactly 1.00 or 1.01. This mathematically guarantees that the independent chains have reached a stable equilibrium. 
 
+<img width="435" height="375" alt="summary" src="https://github.com/user-attachments/assets/b314bf64-ce07-48d9-b84c-f432dab78d92" />
 
 ### 5.4 Bulk Effective Sample Size 
 The effective sample size tells us how many independent, uncorrelated draws we managed to extract from the total sampling history. 
