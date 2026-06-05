@@ -93,7 +93,7 @@ $$y_{i} \sim Bernoulli(p_{i})$$
 ### 4.3 Posterior
 - Bayes theorem combines the priors and likelihood to estimate updated parameter distributions:
 
-$$P(\theta|y) \to P(y|\theta) P(\theta)$$
+$$P(\theta|y) \propto P(y|\theta) P(\theta)$$
 
 
 
