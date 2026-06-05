@@ -67,7 +67,7 @@ y = le.fit_transform(mushroom_df['poisonous'])
 
 $$\beta_{j} \sim N(0, 5)$$
 
-- `sigma_habitat` is assigned a HalfNormal(5) prior to ensure the habitat-effect standard deviation is positive (i.e. to control the variability of habitat coefficients):
+- `sigma_habitat` is assigned a HalfNormal(5) priors, ensuring the habitat-effect standard deviation is positive (i.e. to control the variability of habitat coefficients):
 
 $$\sigma_{habitat} \sim HalfNormal(5)$$
 
@@ -157,7 +157,26 @@ with pm.Model() as mushroom_model:
 ````
 
 ## 5. Model Evaluation 
+### 5.1 Trace Plots
+The posterior density curves (left column) across all three independent chains overlay each other beautifully, establishing that they converged on the same numerical solutions. Correspondingly, the sampling paths (right column) show perfectly stationary, dense, and tightly integrated histories without any geometric sticking, drifting, or multi-modality. This indicates complete parameter space exploration. 
 
+
+
+
+### 5.2 Autocorrelation Plots 
+The autocorrelation coefficients for nearly all parameters drop off to absolute zero by lag 1 or 2, staying well within the boundaries of statistical insignificance (the shaded gray zones). 
+
+- While the group-level random effects (beta_grasses, beta_paths, etc.) display a slight, expected geometric decay, they safely taper off within 5 to 10 lags.
+
+
+### 5.3 Gelman-Rubin Diagnostic 
+The R metric measures the ratio of variance between the chains to the variance within the chains. In this case, every single fixed effect and random effect in the summary table reports an R of exactly 1.00 or 1.01. This mathematically guarantees that the independent chains have reached a stable equilibrium. 
+
+
+### 5.4 Bulk Effective Sample Size 
+The effective sample size tells us how many independent, uncorrelated draws we managed to extract from the total sampling history. 
+- For the primary physical features (fixed effects), the ESS values are massively high, guaranteeing that the posterior means and narrow standard deviation are highly precise.
+- For the hierarchical habitat variables, the ESS drops down slightly. This is an entirely expected structural artifact of random effects trying to share information via partial pooling across small sub-group distributions. Any ESS above 100 is completely safe for inference. 
 
 
 
