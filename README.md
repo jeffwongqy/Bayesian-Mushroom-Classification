@@ -156,7 +156,7 @@ with pm.Model() as mushroom_model:
 
 ````
 
-## 5. Model Evaluation 
+## 5. Model Diagnostics and Convergence
 ### 5.1 Trace Plots
 The posterior density curves (left column) across all three independent chains overlay each other beautifully, establishing that they converged on the same numerical solutions. Correspondingly, the sampling paths (right column) show perfectly stationary, dense, and tightly integrated histories without any geometric sticking, drifting, or multi-modality. This indicates complete parameter space exploration. 
 
@@ -182,5 +182,11 @@ The effective sample size tells us how many independent, uncorrelated draws we m
 - For the hierarchical habitat variables, the ESS drops down slightly. This is an entirely expected structural artifact of random effects trying to share information via partial pooling across small sub-group distributions. Any ESS above 100 is completely safe for inference. 
 
 
+## 6.0 Posterior Predictive Validation and Inference
+A Posterior Predictive Check evaluates model fit by using the parameters learned from the data to simulate entirely new, synthetic datasets, then overlaying them against the true ground truth.
 
-## 
+- The true underlying distribution of the binary classification data is shown by the solid black line (observed). The model's generated expectation is shown by the dashed orange line (Posterior Predictive Mean). The fact that these two lines overlap almost perfectly proves that the model accurately captures the exact proportion of edible versus poisonous mushrooms in the dataset.
+
+- The individual light blue lines represent unique simulation runs from the posterior draws. They form a clean, tight band symmetrically enveloping the ground truth. This shows that the model's uncertainty is well-calibrated - it is neither wildly overconfident nor completely lost.
+
+
