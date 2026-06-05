@@ -68,6 +68,7 @@ y = le.fit_transform(mushroom_df['poisonous'])
 $$\beta_{j} \sim N(0, 5)$$
 
 - `sigma_habitat` is assigned a HalfNormal(5) prior to ensure the habitat-effect standard deviation is positive:
+
 $$\sigma_{habitat} \sim HalfNormal(5)$$
 
 
