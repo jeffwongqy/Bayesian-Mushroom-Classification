@@ -45,5 +45,23 @@ features = ['cap-surface', 'gill-color', 'odor', 'ring-number',
             'veil-color']
 ````
 
+### 3.4 Predictor Encoding 
+This step uses the `OrdinalEncoder` to transform the text categories across all selected physical mushroom traits into dense numerical integer codes for algebraic matrix multiplication. 
 
+````python
+oe = OrdinalEncoder()
+mushroom_df[features] = oe.fit_transform(mushroom_df[features])
+````
+
+### 3.5 Target Encoding 
+This step uses `LabelEncoder` to transform the target class into numerical integer codes.  
+
+````python
+le = LabelEncoder()
+y = le.fit_transform(mushroom_df['poisonous'])
+````
+
+## 4. Model Training 
+### 4.1 The Priors
+- `beta_0`, `beta_cap`, beta_gill, beta_odor, beta_ring, beta_spore, beta_stalk, and beta_veil`
 
