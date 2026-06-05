@@ -63,5 +63,7 @@ y = le.fit_transform(mushroom_df['poisonous'])
 
 ## 4. Model Training 
 ### 4.1 The Priors
-- `beta_0`, `beta_cap`, beta_gill, beta_odor, beta_ring, beta_spore, beta_stalk, and beta_veil`
+- `beta_0`, `beta_cap`, `beta_gill`, `beta_odor`, `beta_ring`, `beta_spore`, `beta_stalk`, and `beta_veil` are assigned Normal(0, 5) priors, expressing the belief that each predictor's effect is likely near zero but can vary widely:
+
+$$\beta_{j} \sim N(0, 5)$$
 
