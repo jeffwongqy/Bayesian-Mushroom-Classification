@@ -14,11 +14,36 @@ Distinguishing between edible and poisonous mushroom species presents a classic 
 
 ## 3. Preprocessing 
 ### 3.1 Data Ingestion 
-These steps mount your Google Drive environment and load the raw mushroom CSV dataset into a pandas DataFrame and preview its initial structural rows. 
+This step mount your Google Drive environment and load the raw mushroom CSV dataset into a pandas DataFrame and preview its initial structural rows. 
 
 ````python
 filepath = "/content/drive/MyDrive/Bayesian Mushroom Classification/mushrooms.csv"
 mushroom_df = pd.read_csv(filepath)
 mushroom_df.head()
 ````
+
+### 3.2 Target Variable Mapping
+This step performs binary custom mapping on the raw target column, converting the class 'e' (edible) into 0 and 'p' (poisonous) into 1. 
+
+````python
+def class_label(row):
+  if row['class'] == 'e':
+    return 0
+  else:
+    return 1
+
+mushroom_df['poisonous'] = mushroom_df.apply(class_label, axis = 1)
+
+````
+
+### 3.3 Feature Selection 
+This step isolates the specific categorical morphological traits from the dataset that will serve as the predictor variables for the regression model. 
+
+````python
+features = ['cap-surface', 'gill-color', 'odor', 'ring-number',
+            'spore-print-color', 'stalk-surface-above-ring',
+            'veil-color']
+````
+
+
 
