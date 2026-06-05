@@ -209,6 +209,10 @@ https://archive.ics.uci.edu/dataset/73/mushroom
 
 [2] Wall, J. (2024, November 23). Bayesian Modeling with PYMC: Building Intuitive and Powerful Models. Medium. https://medium.com/@walljd20/modeling-continuous-targets-building-and-interpreting-bayesian-regressions-using-pymc-e12f8d3730a8
 
+[3] Introductory Overview of PyMC — PyMC 5.13.1 documentation. (n.d.). Www.pymc.io. https://www.pymc.io/projects/docs/en/stable/learn/core_notebooks/pymc_overview.html
+
+‌
+
 
 
 
