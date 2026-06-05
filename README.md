@@ -183,8 +183,7 @@ The effective sample size tells us how many independent, uncorrelated draws we m
 
 
 ## 6.0 Posterior Predictive Validation
-### 6.1 Posterior Predictive Check (PPC)
-A Posterior Predictive Check evaluates model fit by using the parameters learned from the data to simulate entirely new, synthetic datasets, then overlaying them against the true ground truth.
+A Posterior Predictive Check (PPC) evaluates model fit by using the parameters learned from the data to simulate entirely new, synthetic datasets, then overlaying them against the true ground truth.
 
 
 <img width="657" height="550" alt="pcc" src="https://github.com/user-attachments/assets/8cf71913-4057-4092-aa36-5e9ba4e25b09" />
