@@ -91,9 +91,10 @@ $$y_{i} \sim Bernoulli(p_{i})$$
 
 
 ### 4.3 Posterior
-- Bayes theorem combines the priors and likelihood to estimate updated parameter distributions:
+- Bayes theorem combines the priors and likelihood to estimate updated parameter distributions (i.e. update beliefs about predictor effects after observing the data):
 
 $$P(\theta|y) \propto P(y|\theta) P(\theta)$$
 
+where $\theta$ represents all model parameters 
 
 
